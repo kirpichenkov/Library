@@ -1,11 +1,11 @@
-package ru.alishev.springcourse.dao;
+package ru.kirpichenkov.springcourse.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
-import ru.alishev.springcourse.models.Book;
-import ru.alishev.springcourse.models.Person;
+import ru.kirpichenkov.springcourse.models.Book;
+import ru.kirpichenkov.springcourse.models.Person;
 
 import java.util.List;
 @Component
@@ -27,6 +27,18 @@ public class PersonDAO {
     }
     public List<Book> getBookByPersonId(int id){
         return jdbcTemplate.query("Select * from book where person_id=?",new Object[]{id}, new BeanPropertyRowMapper<>(Book.class));
+    }
+
+    public void save(Person person){
+    jdbcTemplate.update("INSERT into person (full_name, year_of_birth)  Values(?,?)", person.getFullName(),person.getYearOfBirth());
+    }
+
+    public void update(int id, Person person){
+        jdbcTemplate.update("UPDATE person SET full_name=?, year_of_birth=? where id=?", person.getFullName(),person.getYearOfBirth(), id);
+    }
+
+    public void delete(int id){
+        jdbcTemplate.update("Delete from person where id=?",id);
     }
 
 

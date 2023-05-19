@@ -5,7 +5,15 @@
     <title>Редактировать человека</title>
 </head>
 <body>
+<form th:method="PATCH" th:action="@{/people/{id}(id=${personn.getId()})}" th:object="${personn}">
+    <label for = "fullname">Введите ФИО: </label>
+    <input type="text" th:field="*{fullName}" id="fullname"/>
 
+
+    <label for = "yearOfBirth">Введите год рождения: </label>
+    <input type="text" th:field="*{yearOfBirth}" id="yearOfBirth"/>
+
+    <input type="submit" value="Update!">
 
 
 </body>

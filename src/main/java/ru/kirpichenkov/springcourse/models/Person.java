@@ -1,6 +1,4 @@
-package ru.alishev.springcourse.models;
-
-import org.springframework.stereotype.Component;
+package ru.kirpichenkov.springcourse.models;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;

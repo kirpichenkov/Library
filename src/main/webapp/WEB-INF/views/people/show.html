@@ -22,8 +22,22 @@
        <tr th:text="${book.getTitle() + ',' + book.getAuthor()+',' + book.getYear()}">book</tr>
     </table>
 
+    <br/>
+    <hr/>
 
 
 </div>
+
+<form th:method="DELETE" th:action="@{/people/{id}(id=${person.getId()})}">
+    <input type="submit" value="Удалить">
+
+<form th:method="GET"  th:action="@{/people/{id}/edit(id=${person.getId()})}">
+    <input type="submit" value="Редактировать">
+</form>
+
+
+
+
+</form>
 </body>
 </html>
